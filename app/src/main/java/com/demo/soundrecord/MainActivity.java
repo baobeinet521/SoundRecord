@@ -168,9 +168,9 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }
                         try {
-                            mAudioRecord.stop();
+//                            mAudioRecord.stop();
                             // 彻底释放资源
-                            mAudioRecord.release();
+//                            mAudioRecord.release();
                             dos.close();
                         } catch (IOException e) {
                             e.printStackTrace();
