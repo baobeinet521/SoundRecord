@@ -228,11 +228,15 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 if (mAudioTrack != null) {
                     mAudioTrack.play();   //开始播放，此时播放的数据为空
-//                    File pcmFile = new File(getExternalFilesDir(Environment.DIRECTORY_MUSIC), "test.pcm");      //创建需要播放的pcm 录音文件
-                    if (mFilePath != null) {
+                    String parentFilePath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "ICAPP" + File.separator + "SoundRecord" + File.separator;
+
+                    File pcmFile = new File(parentFilePath, "ceshi.pcm");      //创建需要播放的pcm 录音文件
+                    String filePath = parentFilePath + "ceshi.pcm";
+                    Log.d(TAG, "run: 播放录音文件目录====   " +filePath);
+                    if (pcmFile != null) {
                         byte[] tempBuffer = new byte[mBufferSizeInBytes];
                         try {
-                            FileInputStream fis = new FileInputStream(mFilePath);
+                            FileInputStream fis = new FileInputStream(filePath);
                             if (fis.available() > 0) {  //获取test.pcm的大小
                                 int read = 0;
                                 while ((read = fis.read(tempBuffer)) != -1) {
