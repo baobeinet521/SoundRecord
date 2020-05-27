@@ -302,13 +302,16 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "onPause: app 在前台运行");
         }else{
             Log.d(TAG, "onPause: app 在后台运行");
-            Intent intent = new Intent(this, NotificationService.class);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                //android8.0以上通过startForegroundService启动service
-                startForegroundService(intent);
-            } else {
-                startService(intent);
-            }
+
+        }
+        Intent intent = new Intent(this, NotificationService.class);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            //android8.0以上通过startForegroundService启动service
+            Log.d(TAG, "onPause: android8.0以上通过startForegroundService启动service");
+            startForegroundService(intent);
+        } else {
+            Log.d(TAG, "onPause: android8.0以下通过startService启动service");
+            startService(intent);
         }
     }
 
