@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SoundRecord</string>
+    <string name="notification_live_start">录音</string>
 </resources>
